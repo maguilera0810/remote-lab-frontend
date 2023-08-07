@@ -16,7 +16,11 @@ const LoginPage: React.FC = () => {
       alignItems="center"
       height="100vh"
     >
-      <AuthForm />
+      <AuthForm 
+        isSignup={false}
+        onSuccess={(user) => {console.log(user)}}
+        onFailure={() => {console.error("errorrrrr")}}
+      />
     </Box>
   );
 };
