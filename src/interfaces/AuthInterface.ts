@@ -5,11 +5,8 @@ export interface User {
   password: string;
   firstName: string;
   lastName: string;
-  cellphone: string;
-  role: Role;
-  // isActive: string;
-  // address: string; //??
-  // birthday: string;//??
+  cellphone?: string;
+  role?: Role;
 }
 
 export interface Role {
