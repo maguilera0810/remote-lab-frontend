@@ -7,7 +7,13 @@ const Navigation: React.FC = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/login">Iniciar sesión</Link>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/signup">Signup</Link>
+        </li>
+        <li>
+          <Link to="/">HomePage</Link>
         </li>
       </ul>
     </nav>

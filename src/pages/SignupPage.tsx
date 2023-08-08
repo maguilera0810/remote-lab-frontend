@@ -1,13 +1,9 @@
 // src/pages/LoginPage.tsx
 import React from 'react';
-import { Box, TextField, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import AuthForm from '../components/organisms/AuthForm';
 
 const SignupPage: React.FC = () => {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí puedes implementar la lógica para manejar el inicio de sesión
-  };
 
   return (
     <Box
@@ -16,10 +12,10 @@ const SignupPage: React.FC = () => {
       alignItems="center"
       height="100vh"
     >
-      <AuthForm 
+      <AuthForm
         isSignup={true}
-        onSuccess={(user) => {console.log(user)}}
-        onFailure={() => {console.error("errorrrrr")}}
+        onSuccess={(user) => { console.log(user) }}
+        onFailure={() => { console.error("errorrrrr") }}
       />
     </Box>
   );
