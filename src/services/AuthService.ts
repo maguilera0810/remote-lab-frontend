@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { User, Token } from '../interfaces/AuthInterface';
+import { User, Token } from '../interfaces/AuthInterfaces';
 import { Environment } from './../environments/Environment';
 
 const apiUrl = Environment.apiUrl;

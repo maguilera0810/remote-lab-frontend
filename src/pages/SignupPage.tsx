@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import AuthForm from '../components/organisms/AuthForm';
 
-const LoginPage: React.FC = () => {
+const SignupPage: React.FC = () => {
 
   return (
     <Box
@@ -13,7 +13,7 @@ const LoginPage: React.FC = () => {
       height="100vh"
     >
       <AuthForm
-        isSignup={false}
+        isSignup={true}
         onSuccess={(user) => { console.log(user) }}
         onFailure={() => { console.error("errorrrrr") }}
       />
@@ -21,4 +21,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default SignupPage;
