@@ -57,26 +57,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, isSignup, onSuccess, onFailu
     >
       <form onSubmit={handleSubmit}>
         <Box p={2} maxWidth={400}>
-        <TextField
+          <TextField
             fullWidth
-            label="Correo electrónico"
+            label="Username"
+            placeholder='Ingresa tu cedula'
             variant="outlined"
             margin="normal"
-            type="email"
+            type="text"
             required
             name="username"
             value={formData.username}
-            onChange={handleInputChange}
-          />
-          <TextField
-            fullWidth
-            label="Correo electrónico"
-            variant="outlined"
-            margin="normal"
-            type="email"
-            required
-            name="email"
-            value={formData.email}
             onChange={handleInputChange}
           />
           <TextField
@@ -92,6 +82,17 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, isSignup, onSuccess, onFailu
           />
           {isSignup && (
             <>
+              <TextField
+                fullWidth
+                label="Correo electrónico"
+                variant="outlined"
+                margin="normal"
+                type="email"
+                required
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+              />  
               <TextField
                 fullWidth
                 label="Nombre"
