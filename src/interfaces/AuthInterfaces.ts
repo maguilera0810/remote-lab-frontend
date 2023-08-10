@@ -2,9 +2,9 @@ export interface User {
   id: number;
   username: string; // cedula
   email: string;
-  password: string;
   firstName: string;
   lastName: string;
+  password?: string;
   cellphone?: string;
   role?: Role;
 }

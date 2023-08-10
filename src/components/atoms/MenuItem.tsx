@@ -4,11 +4,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { MenuItemProps } from '../../interfaces/NavigationIntefaces';
 import { IGenericIconProps } from '../../interfaces/GlobalInterfaces';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import * as icons from "@mui/icons-material";
+
 import { Link } from 'react-router-dom';
 
 
-const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link, subMenu, isOpen = false, onClick }) => {
 
   const [Icon, setIcon] = useState<React.JSX.Element | null>(null);
 
@@ -24,6 +26,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link }) => {
       setIcon(null)
     }
   }, [icon])
+
   return link ? (
     <Link to={link}>
       <ListItemButton>
@@ -32,9 +35,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link }) => {
       </ListItemButton>
     </Link>
   ) : (
-    <ListItemButton>
+    <ListItemButton onClick={onClick}>
       {Icon && <ListItemIcon>{Icon}</ListItemIcon>}
       <ListItemText primary={label} />
+      {subMenu && <ListItemIcon>
+        {isOpen ? <ExpandLess /> : <ExpandMore />}
+      </ListItemIcon>}
     </ListItemButton>
   );
 }
