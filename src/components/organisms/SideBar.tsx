@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, Avatar, Typography, Collapse } from '@mui/material';
+import { Drawer, List, Avatar, Typography, Collapse, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { MenuItemProps, SidebarProps } from '../../interfaces/NavigationIntefaces';
 import MenuItem from '../atoms/MenuItem';
@@ -27,7 +27,7 @@ const UserName = styled(Typography)({
   marginBottom: 16,
 });
 
-const Sidebar: React.FC<SidebarProps> = ({ user, menuItems }) => {
+const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isOpen }) => {
   const [openSubMenuIndices, setOpenSubMenuIndices] = useState<number[]>([]);
   const [openSubSubMenuIndices, setOpenSubSubMenuIndices] = useState<number[]>([]);
 
@@ -83,7 +83,9 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems }) => {
       <Collapse in={isSubSubMenuOpen(parentIndex)} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           {subSubMenu.map((subSubMenuItem, subSubIndex) => (
-            <MenuItem label={subSubMenuItem.label}
+            <MenuItem
+              key={subSubIndex}
+              label={subSubMenuItem.label}
               icon={subSubMenuItem.icon}
               link={subSubMenuItem.link}
               subMenu={subSubMenuItem.subMenu}
@@ -96,7 +98,12 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems }) => {
   };
 
   return (
-    <StyledDrawer variant="permanent">
+    <StyledDrawer variant="persistent"
+      anchor='left'
+      open={isOpen}>
+      <Button onClick={onToggleSidebar}>
+        {isOpen ? 'Hide Sidebar' : 'Show Sidebar'}
+      </Button>
       <DrawerPaper>
         <StyledAvatar alt={user.name} src={user.avatarUrl} />
         <UserName variant="h6">{user.name}</UserName>

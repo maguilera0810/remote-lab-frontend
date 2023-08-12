@@ -15,4 +15,6 @@ export interface SidebarProps {
     avatarUrl: string;
   };
   menuItems: MenuItemProps[];
+  onToggleSidebar: () => void;
+  isOpen: boolean;
 }

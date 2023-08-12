@@ -4,13 +4,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
-import Navigation from './components/organisms/Navigation';
 
 const App: React.FC = () => {
   return (
     <Router>
       <div>
-        <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
