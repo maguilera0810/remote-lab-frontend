@@ -9,7 +9,12 @@ export const menuItems: MenuItemProps[] = [
   {
     label: 'Login',
     icon: 'Login',
-    link: '/login'
+    link: '/login/'
+  },
+  {
+    label: 'School',
+    icon: 'School',
+    link: '/school/'
   },
   {
     label: 'Profile 1',
@@ -18,12 +23,12 @@ export const menuItems: MenuItemProps[] = [
       {
         label: 'Login',
         icon: 'Login',
-        link: '/login',
+        link: '/login/',
       },
       {
         label: 'Signup',
         icon: 'Delete',
-        link: '/signup',
+        link: '/signup/',
       },
     ],
   },

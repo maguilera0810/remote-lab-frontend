@@ -6,7 +6,7 @@ export interface University {
 export interface School {
   id: number;
   name: string;
-  university: number;
+  university?: number;
 }
 
 export interface Subject {
