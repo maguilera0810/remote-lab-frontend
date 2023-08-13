@@ -1,7 +1,7 @@
 // src/pages/LoginPage.tsx
 import React from 'react';
 import { Box } from '@mui/material';
-import AuthForm from '../components/organisms/AuthForm';
+import AuthForm from '../components/organisms/forms/AuthForm';
 
 const SignupPage: React.FC = () => {
 

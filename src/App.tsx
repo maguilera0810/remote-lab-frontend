@@ -6,6 +6,8 @@ import SignupPage from './pages/SignupPage';
 import HomePage from './pages/HomePage';
 import SchoolListPage from './pages/school/SchoolListPage';
 
+
+// https://mui.com/material-ui/react-app-bar/ agregar en vez de header
 const App: React.FC = () => {
   return (
     <Router>

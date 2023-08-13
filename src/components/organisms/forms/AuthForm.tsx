@@ -1,8 +1,8 @@
 // src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
-import { login, signup } from '../../services/AuthService';
-import { User } from "../../interfaces/AuthInterfaces";
+import { login, signup } from '../../../services/AuthService';
+import { User } from "../../../interfaces/AuthInterfaces";
 
 export interface AuthFormProps {
   title?: string;

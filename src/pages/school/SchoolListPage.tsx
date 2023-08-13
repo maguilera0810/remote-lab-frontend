@@ -3,7 +3,7 @@ import BasicTable from '../../components/molecules/BasicTable';
 import GenericTemplate from '../../components/templates/GenericTemplate';
 import { schools } from '../../data/SchoolData';
 import { GridColDef, GridRowParams } from '@mui/x-data-grid';
-import ColumnGenerator from '../../utils/columns/Generator';
+import ColumnGenerator from '../../utils/columns/ColumnGenerator';
 
 const SchoolListPage: React.FC = () => {
   const handleEdit = (id: number) => {

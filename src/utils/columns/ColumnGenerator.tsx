@@ -1,4 +1,6 @@
-import { schoolColumns } from "./SchoolColumns";
+import { SchoolColumns } from "../../data/columns/SchoolColumns";
+import { SubjectColumns } from "../../data/columns/SubjectColumns";
+import { UserColumns } from "../../data/columns/UserColumns";
 import { GridColDef, GridCellParams } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,13 +10,12 @@ import { ColumnGeneratorProps } from "../../interfaces/GlobalInterfaces";
 const ColumnGenerator = ({ columnType, actions = true, handleEdit,
   handleDelete }: ColumnGeneratorProps) => {
   const columnsAvailable: { [key: string]: GridColDef[] } = {
-    'school': schoolColumns,
-    'user': schoolColumns,
+    'school': SchoolColumns,
+    'subject': SubjectColumns,
+    'user': UserColumns,
   };
   let columns: GridColDef[] = [...columnsAvailable[columnType]];
-  if (!actions) {
-    return columns;
-  }
+  if (!actions) { return columns; }
   // width: 150,
   columns.push({
     field: 'actions',

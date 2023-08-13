@@ -1,6 +1,6 @@
 import { DataGrid, GridColDef, GridValueGetterParams, GridCellParams } from '@mui/x-data-grid';
 
-export const schoolColumns: GridColDef[] = [
+export const SchoolColumns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'ID',
