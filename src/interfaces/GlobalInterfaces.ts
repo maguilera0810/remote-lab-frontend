@@ -11,15 +11,25 @@ export interface ColumnGeneratorProps {
   handleDelete?: (id: number) => void;
 }
 
-export interface FormData {
-  [key: string]: string;
-}
 
-export interface FormField {
+export interface FieldConfig {
   key: string;
-  label?: string;
+  label: string;
+  type: 'text' | 'number' | 'email' | 'select' | 'textarea' | 'date'; // Añadir tipos adicionales aquí
+  options?: Array<{ value: string | number; label: string }>;
 }
 
-export interface GenericForm {
-  formFields?: FormField[];
+export interface FormData {
+  [key: string]: string | number | Date; // Ajustar tipos de acuerdo a los tipos de campo
+}
+
+export interface GenericFormProps {
+  fields: FieldConfig[];
+  data: FormData;
+  onSubmit: (formData: FormData) => void;
+  // setFormData?: (data: FormData) => void;
+}
+
+export interface RouterGeneratorProps {
+  routerType?: 'general';
 }

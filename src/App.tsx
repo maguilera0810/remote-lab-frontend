@@ -1,26 +1,16 @@
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
-import HomePage from './pages/HomePage';
-import SchoolListPage from './pages/school/SchoolListPage';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 
+import RouterGenerator from './routes/RouterGenerator'
 // https://mui.com/material-ui/react-app-bar/ agregar en vez de header
 const App: React.FC = () => {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/school" element={<SchoolListPage />} />
-          {/* Aquí puedes agregar más rutas para otras páginas */}
-        </Routes>
-      </div>
-    </Router>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <RouterGenerator routerType={'general'} />
+    </LocalizationProvider>
   );
 };
 
