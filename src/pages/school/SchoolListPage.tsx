@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BasicTable from '../../components/molecules/BasicTable';
-import GenericTemplate from '../../components/templates/GenericTemplate';
+import BaseTemplate from '../../components/templates/BaseTemplate';
 import { schools } from '../../data/SchoolData';
 import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import ColumnGenerator from '../../utils/columns/ColumnGenerator';
@@ -28,14 +28,14 @@ const SchoolListPage: React.FC = () => {
   }));
 
   return <>
-    <GenericTemplate>
+    <BaseTemplate>
       <h2>School List Page!</h2>
       <BasicTable
         rows={schools}
         columns={columns}
         onRowDoubleClick={handdleRowDoubleClick}
       ></BasicTable>
-    </GenericTemplate>
+    </BaseTemplate>
   </>;
 };
 

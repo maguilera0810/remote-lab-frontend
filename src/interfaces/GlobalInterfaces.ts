@@ -1,4 +1,6 @@
 import { IconNames } from "../types/GlobalTypes";
+// import { User } from "./AuthInterfaces";
+// import { School } from "./SchoolInterfaces";
 
 export interface IGenericIconProps {
   iconName: IconNames;
@@ -15,12 +17,13 @@ export interface ColumnGeneratorProps {
 export interface FieldConfig {
   key: string;
   label: string;
+  placeHolder?: string;
   type: 'text' | 'number' | 'email' | 'select' | 'textarea' | 'date'; // Añadir tipos adicionales aquí
   options?: Array<{ value: string | number; label: string }>;
 }
 
 export interface FormData {
-  [key: string]: string | number | Date; // Ajustar tipos de acuerdo a los tipos de campo
+  [key: string]: string | number | Date | FormData; // Ajustar tipos de acuerdo a los tipos de campo
 }
 
 export interface GenericFormProps {

@@ -17,4 +17,5 @@ export interface SidebarProps {
   menuItems: MenuItemProps[];
   onToggleSidebar: () => void;
   isOpen: boolean;
+  sidebarWidth?: number
 }

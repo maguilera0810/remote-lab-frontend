@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { Drawer, List, Avatar, Typography, Collapse, Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import { MenuItemProps, SidebarProps } from '../../interfaces/NavigationIntefaces';
 import MenuItem from '../atoms/MenuItem';
-
-
-const StyledDrawer = styled(Drawer)({
-  width: 240,
-  flexShrink: 0,
-});
+import DrawerHeader from '../atoms/DrawerHeader'
+import IconButton from '@mui/material/IconButton';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 const DrawerPaper = styled('div')({
   width: 240,
@@ -27,7 +25,8 @@ const UserName = styled(Typography)({
   marginBottom: 16,
 });
 
-const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isOpen }) => {
+const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isOpen, sidebarWidth = 240 }) => {
+  const theme = useTheme();
   const [openSubMenuIndices, setOpenSubMenuIndices] = useState<number[]>([]);
   const [openSubSubMenuIndices, setOpenSubSubMenuIndices] = useState<number[]>([]);
 
@@ -98,19 +97,30 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
   };
 
   return (
-    <StyledDrawer variant="persistent"
+    <Drawer
+      sx={{
+        width: sidebarWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: sidebarWidth,
+          boxSizing: 'border-box',
+        },
+      }}
+      variant="persistent"
       anchor='left'
-      open={isOpen}>
-      <Button onClick={onToggleSidebar}>
-        {isOpen ? 'Hide Sidebar' : 'Show Sidebar'}
-      </Button>
+      open={isOpen}
+    >
+      <DrawerHeader>
+        <IconButton onClick={onToggleSidebar}>
+          {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
+      </DrawerHeader>
       <DrawerPaper>
         <StyledAvatar alt={user.name} src={user.avatarUrl} />
         <UserName variant="h6">{user.name}</UserName>
         <List>
           {menuItems.map((menuItem: MenuItemProps, index: number) => (
             <div key={index}>
-              {/* {index} */}
               <MenuItem label={menuItem.label}
                 onClick={() => handleSubMenuClick(index)}
                 icon={menuItem.icon}
@@ -123,7 +133,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
           ))}
         </List>
       </DrawerPaper>
-    </StyledDrawer>
+    </Drawer>
   );
 };
 

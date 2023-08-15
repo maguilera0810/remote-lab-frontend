@@ -1,11 +1,11 @@
 import React from 'react';
-import GenericTemplate from '../components/templates/GenericTemplate';
+import BaseTemplate from '../components/templates/BaseTemplate';
 
 const Home: React.FC = () => {
   return <>
-    <GenericTemplate>
+    <BaseTemplate>
       <h2>Home Page!</h2>
-    </GenericTemplate>
+    </BaseTemplate>
   </>;
 };
 

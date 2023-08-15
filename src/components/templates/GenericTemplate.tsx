@@ -11,8 +11,8 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   const user: any = {
-    name: "Mauricio",
-    avatarUrl: "",
+    name: "Mauricio Aguilera",
+    avatarUrl: "https://pbs.twimg.com/profile_images/1501685076488118272/i8DlJPnd_400x400.jpg",
   }
 
   const toggleSideBar = () => {

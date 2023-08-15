@@ -28,7 +28,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link, subMenu, isOpen 
   }, [icon])
 
   return link ? (
-    <Link to={link}>
+    <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
       <ListItemButton>
         {Icon && <ListItemIcon>{Icon}</ListItemIcon>}
         <ListItemText primary={label} />
