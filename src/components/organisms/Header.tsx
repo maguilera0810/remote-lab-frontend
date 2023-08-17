@@ -40,25 +40,20 @@ const AppBar = styled(MuiAppBar, {
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar, isSidebarOpen, open }) => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" color='default'>
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={onToggleSidebar}
-          >
-            <MenuIcon />
-          </IconButton>
-          {/* <Button onClick={onToggleSidebar}>
-            {isSidebarOpen ? 'Hide Sidebar' : 'Show Sidebar'}
-          </Button> */}
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="fixed" color='default'>
+      <Toolbar>
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 2 }}
+          onClick={onToggleSidebar}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Toolbar>
+    </AppBar>
   );
 };
 
