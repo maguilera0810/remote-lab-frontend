@@ -4,16 +4,16 @@ import BaseTemplate from '../../components/templates/BaseTemplate';
 import { schools } from '../../data/SchoolData';
 import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import ColumnGenerator from '../../utils/columns/ColumnGenerator';
+import { useNavigate } from "react-router-dom";
 
 const SchoolListPage: React.FC = () => {
+  const navigate = useNavigate();
   const handleEdit = (id: number) => {
-    console.log("editar ", id);
-    // TODO AGREGAR LOGINA EDITAR
+    navigate(`/school/${id}`);
   };
 
   const handleDelete = (id: number) => {
     console.log("eliminar ", id);
-    // TODO AGREGAR LOGINA DELETE
   };
 
   const handdleRowDoubleClick = (params: GridRowParams) => {
