@@ -4,7 +4,7 @@ import { TextField, Button, Grid, Select, MenuItem, TextareaAutosize } from '@mu
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { SelectChangeEvent } from '@mui/material/Select';
 
-const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, data }) => {
+const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, onDelete, onGoBack, data }) => {
   const [formData, setFormData] = useState<FormData>(data);
 
   const handleChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
@@ -36,14 +36,29 @@ const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, data }) => 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(formData);
+    onSubmit && onSubmit(formData);
   };
 
+  const handleDelete = () => {
+    onDelete && onDelete(parseInt(formData["id"].toString()));
+  };
+  const handleGoBack = () => {
+    onGoBack && onGoBack();
+  };
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
+        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1 }}>
+          {onGoBack && <Button onClick={handleGoBack} variant="outlined">Listado</Button>}
+          {onDelete && <Button onClick={handleDelete} variant="contained" color="secondary">Delete</Button>}
+          {onSubmit && <Button type="submit" variant="contained" color="primary">Submit</Button>}
+        </Grid>
+
         {fields.map((field) => (
-          <Grid item xs={6} key={field.key}>
+          <Grid item
+            xs={3}
+            key={field.key}
+            {...field.cssProps}>
             {field.type === 'select' ? (
               <Select
                 name={field.key}
@@ -86,11 +101,6 @@ const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, data }) => 
             )}
           </Grid>
         ))}
-        <Grid item xs={6}>
-          <Button type="submit" variant="contained" color="primary">
-            Submit
-          </Button>
-        </Grid>
       </Grid>
     </form>
   );

@@ -1,4 +1,5 @@
 import { IconNames } from "../types/GlobalTypes";
+import { GridProps } from '@mui/material';
 // import { User } from "./AuthInterfaces";
 // import { School } from "./SchoolInterfaces";
 
@@ -20,6 +21,7 @@ export interface FieldConfig {
   placeHolder?: string;
   type: 'text' | 'number' | 'email' | 'select' | 'textarea' | 'date'; // Añadir tipos adicionales aquí
   options?: Array<{ value: string | number; label: string }>;
+  cssProps?: GridProps;
 }
 
 export interface FormData {
@@ -29,7 +31,10 @@ export interface FormData {
 export interface GenericFormProps {
   fields: FieldConfig[];
   data: FormData;
-  onSubmit: (formData: FormData) => void;
+  onSubmit?: (formData: FormData) => void;
+  onDelete?: (id: number) => void;
+  onGoBack?: () => void;
+
   // setFormData?: (data: FormData) => void;
 }
 
