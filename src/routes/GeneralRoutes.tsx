@@ -5,6 +5,8 @@ import {
   HomePage,
   SchoolDetailPage,
   SchoolListPage,
+  SubjectListPage,
+  SubjectDetailPage,
   ErrorPage
 } from '../pages'
 
@@ -33,6 +35,16 @@ const generalRoutes: RouteObject[] = [
   {
     path: "/school/:schoolId",
     element: <SchoolDetailPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/subject",
+    element: <SubjectListPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/subject/:subjectId",
+    element: <SubjectDetailPage />,
     errorElement: <ErrorPage />,
   },
 ];
