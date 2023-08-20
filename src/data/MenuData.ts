@@ -12,9 +12,20 @@ export const menuItems: MenuItemProps[] = [
     link: '/login/'
   },
   {
-    label: 'School',
-    icon: 'School',
-    link: '/school/'
+    label: 'Management',
+    icon: 'Settings',
+    subMenu: [
+      {
+        label: 'School',
+        icon: 'School',
+        link: '/school/'
+      },
+      {
+        label: 'Subject',
+        icon: 'Subject',
+        link: '/subject/'
+      },
+    ]
   },
   {
     label: 'Profile 1',
