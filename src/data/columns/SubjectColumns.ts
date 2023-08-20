@@ -8,7 +8,13 @@ export const SubjectColumns: GridColDef[] = [
   },
   {
     field: 'name',
-    headerName: 'First name',
+    headerName: 'Name',
     width: 130
   },
+  {
+    field: 'school',
+    headerName: 'School',
+    width: 130
+  },
+  
 ];
