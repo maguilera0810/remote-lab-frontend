@@ -9,9 +9,12 @@ class SubjectService {
 
   constructor() { }
 
-  async createSubject(subject: Partial<Subject>): Promise<Subject | null> {
+  async create(data: Partial<Subject>): Promise<Subject | null> {
     try {
-      const response = await axios.post<Subject>(`${this.apiUrl}/subjects`, subject);
+      if (isFake) {
+        return data as Subject;
+      }
+      const response = await axios.post<Subject>(`${this.apiUrl}/subjects`, data);
       return response.data;
     } catch (error) {
       console.error('Error al crear la asignatura:', error);
@@ -19,7 +22,7 @@ class SubjectService {
     }
   }
 
-  async getSubjects(): Promise<Subject[] | null> {
+  async getAll(): Promise<Subject[] | null> {
     try {
       if (isFake) {
         return subjects;
@@ -32,7 +35,7 @@ class SubjectService {
     }
   }
 
-  async getSubject(id: number | string): Promise<Subject | null> {
+  async getOne(id: number | string): Promise<Subject | null> {
     try {
       if (isFake) {
         const parsedId = typeof id === 'number' ? id : parseInt(id, 10);
@@ -48,9 +51,12 @@ class SubjectService {
     }
   }
 
-  async updateSubject(id: number, updates: Partial<Subject>): Promise<Subject | null> {
+  async update(id: number | string, data: Partial<Subject>): Promise<Subject | null> {
     try {
-      const response = await axios.put<Subject>(`${this.apiUrl}/subjects/${id}`, updates);
+      if (isFake) {
+        return data as Subject;
+      }
+      const response = await axios.put<Subject>(`${this.apiUrl}/subjects/${id}`, data);
       return response.data;
     } catch (error) {
       console.error('Error al actualizar la asignatura:', error);
@@ -58,8 +64,11 @@ class SubjectService {
     }
   }
 
-  async deleteSubject(id: number): Promise<boolean> {
+  async delete(id: number | string): Promise<boolean> {
     try {
+      if (isFake) {
+        return true;
+      }
       await axios.delete(`${this.apiUrl}/subjects/${id}`);
       return true;
     } catch (error) {

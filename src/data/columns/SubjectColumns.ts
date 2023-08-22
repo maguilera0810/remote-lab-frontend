@@ -4,7 +4,7 @@ export const SubjectColumns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'ID',
-    width: 70
+    width: 30
   },
   {
     field: 'name',
@@ -14,7 +14,6 @@ export const SubjectColumns: GridColDef[] = [
   {
     field: 'school',
     headerName: 'School',
-    width: 130
+    width: 100
   },
-  
 ];

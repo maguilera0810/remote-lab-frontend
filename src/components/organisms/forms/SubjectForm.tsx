@@ -22,7 +22,7 @@ const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack,
   };
 
   const getSchools = async () => {
-    const fetchedSchools = await schoolService.getSchools();
+    const fetchedSchools = await schoolService.getAll();
     if (fetchedSchools) {
       setSchools(fetchedSchools);
     }
