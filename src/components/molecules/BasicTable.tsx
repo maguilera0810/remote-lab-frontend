@@ -13,8 +13,12 @@ const BasicTable: React.FC<BasicTableProps> = ({ rows, columns, onRowDoubleClick
 
 
   useEffect(() => {
+    setCurrentRows(rows);
+  }, [rows])
 
-  }, [rows, columns])
+  useEffect(() => {
+    setCurrentColumns(columns);
+  }, [columns])
 
   return (
     <div style={{ height: '100%', width: '100%' }}>
