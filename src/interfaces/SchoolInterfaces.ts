@@ -13,6 +13,7 @@ export interface Subject {
   id: number;
   name: string;
   description: string;
+  school: number
 }
 
 export interface Laboratory {

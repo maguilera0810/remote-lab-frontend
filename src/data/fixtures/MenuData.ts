@@ -1,4 +1,4 @@
-import { MenuItemProps } from '../interfaces/NavigationIntefaces';
+import { MenuItemProps } from '../../interfaces/NavigationIntefaces';
 
 export const menuItems: MenuItemProps[] = [
   {

@@ -3,6 +3,7 @@ import env from "react-dotenv";
 export const Environment = {
   production: false,
   env: 'dev',
+  isFake: true,
   // apiUrl: env.API_URL,
   apiUrl: 'http://127.0.0.1:8080',
   assets_url: '../../../assets/',

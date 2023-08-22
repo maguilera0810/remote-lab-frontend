@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import Sidebar from '../../components/organisms/SideBar';
-import { menuItems } from '../../data/MenuData';
+import { menuItems } from '../../data/fixtures/MenuData';
 import Header from '../organisms/Header';
 
 interface GenericTemplateProps {
