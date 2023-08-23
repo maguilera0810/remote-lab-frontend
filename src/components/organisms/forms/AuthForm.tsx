@@ -1,7 +1,7 @@
 // src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
-import { login, signup } from '../../../services/AuthService';
+import authService from '../../../services/AuthService';
 import { User } from "../../../interfaces/AuthInterfaces";
 
 export interface AuthFormProps {
@@ -35,7 +35,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, isSignup, onSuccess, onFailu
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const authFunc = isSignup ? signup : login;
+      const authFunc = isSignup ? authService.signup : authService.login;
       const user = await authFunc(formData);
       if (user) {
         onSuccess(user);
