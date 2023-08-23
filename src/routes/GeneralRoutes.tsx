@@ -1,4 +1,5 @@
-import { RouteObject } from "react-router-dom";
+import { User } from "../interfaces/AuthInterfaces";
+import { Navigate, RouteObject } from 'react-router-dom';
 import {
   LoginPage,
   SignupPage,
@@ -11,42 +12,50 @@ import {
 } from '../pages'
 
 
-const generalRoutes: RouteObject[] = [
-  {
-    path: "/",
-    element: <HomePage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/signup",
-    element: <SignupPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/school",
-    element: <SchoolListPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/school/:schoolId",
-    element: <SchoolDetailPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/subject",
-    element: <SubjectListPage />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/subject/:subjectId",
-    element: <SubjectDetailPage />,
-    errorElement: <ErrorPage />,
-  },
-];
+const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] => {
+  const RenderBasedOnAuth = (authenticatedComponent: React.ReactElement, redirectPath: string = '/login') => (token && user) ? authenticatedComponent : <Navigate to={redirectPath} />;
+  return [
+    {
+      path: "/",
+      element: RenderBasedOnAuth(<HomePage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/login",
+      element: <LoginPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/signup",
+      element: <SignupPage />,
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/school",
+      element: RenderBasedOnAuth(<SchoolListPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/school/:schoolId",
+      element: RenderBasedOnAuth(<SchoolDetailPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/subject",
+      element: RenderBasedOnAuth(<SubjectListPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/subject/:subjectId",
+      element: RenderBasedOnAuth(<SubjectDetailPage />),
+      errorElement: <ErrorPage />,
+    },
+  ];
 
-export default generalRoutes
+}
+
+
+export default GeneralRoutes;
+
+
+

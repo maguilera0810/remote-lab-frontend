@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Environment } from '../environments/Environment';
+import Environment from '../environments/Environment';
 import { School } from '../interfaces/SchoolInterfaces';
 import { schools } from '../data/fixtures/SchoolData';
 const { isFake } = Environment;

@@ -1,6 +1,6 @@
-import env from "react-dotenv";
+// import env from "react-dotenv";
 
-export const Environment = {
+const Environment = {
   production: false,
   env: 'dev',
   isFake: true,
@@ -9,3 +9,5 @@ export const Environment = {
   assets_url: '../../../assets/',
   tcUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO',
 };
+
+export default Environment;

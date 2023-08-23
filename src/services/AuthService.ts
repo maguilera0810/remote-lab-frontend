@@ -1,29 +1,33 @@
 import axios from 'axios';
 import { User, Token } from '../interfaces/AuthInterfaces';
-import { Environment } from './../environments/Environment';
+import Environment from './../environments/Environment';
 
+
+const { apiUrl } = Environment;
+const { isFake } = Environment;
 
 export class AuthService {
-  apiUrl = Environment.apiUrl;
 
-  async login(user: Partial<User>): Promise<User | null> {
+  async login(user: Partial<User>): Promise<string | null> {
     const password = user.password;
     const username = user.username;
-    try {
-      const response = await axios.post<Token>(`${this.apiUrl}/login`, { username, password });
-      const token = response.data.token;
-      return await this.fetchUser(token);
-    } catch (error) {
-      console.error('Error en el inicio de sesión:', error);
-      return null;
+    if (isFake) {
+      return "123456789";
     }
+    return await axios.post<Token>(`${apiUrl}/login`, { username, password }).then((response) => {
+      return response.data.token;
+      // return this.fetchUser(token);
+    }).catch((error) => {
+      console.error('Error en el inicio de sesión:', error);
+      return error;
+    });
   }
 
-  async signup(user: Partial<User>): Promise<User | null> {
+  async signup(user: Partial<User>): Promise<string | null> {
     try {
-      const response = await axios.post<Token>(`${this.apiUrl}/signup`, user);
-      const token = response.data.token;
-      return await this.fetchUser(token);
+      const response = await axios.post<Token>(`${apiUrl}/signup`, user);
+      return response.data.token;
+      // return await this.fetchUser(token);
     } catch (error) {
       console.error('Error al registrarse:', error);
       return null;
@@ -33,7 +37,7 @@ export class AuthService {
   async fetchUser(token: string): Promise<User | null> {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get<User>(`${this.apiUrl}/user`, { headers });
+      const response = await axios.get<User>(`${apiUrl}/user`, { headers });
       return response.data;
     } catch (error) {
       console.error('Error al obtener el usuario:', error);
@@ -44,7 +48,7 @@ export class AuthService {
   async renewToken(token: string): Promise<Token | null> {
     try {
       const response = await axios.post<Token>(
-        `${this.apiUrl}/renew-token`,
+        `${apiUrl}/renew-token`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -57,7 +61,7 @@ export class AuthService {
 
   async verifyToken(token: string): Promise<boolean> {
     try {
-      await axios.get(`${this.apiUrl}/verify-token`, { headers: { Authorization: `Bearer ${token}` } });
+      await axios.get(`${apiUrl}/verify-token`, { headers: { Authorization: `Bearer ${token}` } });
       return true;
     } catch (error) {
       console.error('El token no es válido:', error);

@@ -2,14 +2,19 @@
 import React from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-
+import { useSelector } from 'react-redux';
+import { RootState } from './redux/store';
 
 import RouterGenerator from './routes/RouterGenerator'
-// https://mui.com/material-ui/react-app-bar/ agregar en vez de header
+
+
 const App: React.FC = () => {
+  const token = useSelector((state: RootState) => state.auth.token)
+  const user = useSelector((state: RootState) => state.auth.user)
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <RouterGenerator routerType={'general'} />
+      <RouterGenerator routerType={'general'} token={token} user={user} />
     </LocalizationProvider>
   );
 };

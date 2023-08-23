@@ -1,6 +1,7 @@
 import { IconNames } from "../types/GlobalTypes";
 import { GridProps } from '@mui/material';
 import { School, Subject } from "./SchoolInterfaces";
+import { User } from "./AuthInterfaces";
 // import { User } from "./AuthInterfaces";
 // import { School } from "./SchoolInterfaces";
 
@@ -18,6 +19,8 @@ export interface ColumnGeneratorProps {
 
 export interface RouterGeneratorProps {
   routerType?: 'general';
+  token: string | null;
+  user: User | null;
 }
 
 export interface FieldConfig {
