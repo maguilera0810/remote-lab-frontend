@@ -3,11 +3,7 @@ import { SubjectFormProps } from '../../../interfaces/FormInterfaces'
 import { TextField, Button, Grid, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import { School, Subject } from "../../../interfaces/SchoolInterfaces";
-import SchoolService from '../../../services/SchoolService';
-const schoolService = new SchoolService();
-
-
-
+import schoolService from '../../../services/SchoolService';
 const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack, data }) => {
 
   const [formData, setFormData] = useState<Subject>(data);
