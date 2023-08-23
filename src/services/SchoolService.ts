@@ -4,7 +4,7 @@ import { School } from '../interfaces/SchoolInterfaces';
 import { schools } from '../data/fixtures/SchoolData';
 const { isFake } = Environment;
 
-class SchoolService {
+export class SchoolService {
   apiUrl: string = Environment.apiUrl;
 
   async create(data: Partial<School>): Promise<School | null> {
@@ -76,4 +76,4 @@ class SchoolService {
   }
 }
 
-export default SchoolService;
+export default new SchoolService();

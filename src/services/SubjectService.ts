@@ -4,7 +4,7 @@ import { Subject } from '../interfaces/SchoolInterfaces';
 import subjects from '../data/fixtures/SubjectData';
 const { isFake } = Environment;
 
-class SubjectService {
+export class SubjectService {
   private apiUrl: string = Environment.apiUrl;
 
   constructor() { }
@@ -78,4 +78,4 @@ class SubjectService {
   }
 }
 
-export default SubjectService;
+export default new SubjectService();
