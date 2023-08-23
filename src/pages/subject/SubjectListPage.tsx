@@ -5,9 +5,8 @@ import BaseTemplate from '../../components/templates/BaseTemplate';
 import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import ColumnGenerator from '../../utils/columns/ColumnGenerator';
 import { useNavigate } from "react-router-dom";
-import SubjectService from '../../services/SubjectService';
+import subjectService from '../../services/SubjectService';
 import { Subject } from '../../interfaces/SchoolInterfaces';
-const subjectService = new SubjectService();
 
 const SubjectListPage: React.FC = () => {
   const navigate = useNavigate();

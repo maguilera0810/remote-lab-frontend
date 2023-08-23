@@ -5,11 +5,10 @@ import BaseTemplate from '../../components/templates/BaseTemplate';
 import SchoolForm from '../../components/organisms/forms/SchoolForm';
 import { School } from "../../interfaces/SchoolInterfaces";
 import generateDefaultObject from '../../utils/forms/DefaultDataGenerator';
-import SchoolService from '../../services/SchoolService';
+import schoolService from '../../services/SchoolService';
 import { schools } from '../../data/fixtures/SchoolData';
 import { useNavigate } from "react-router-dom";
 
-const schoolService = new SchoolService()
 const SchoolDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const { schoolId = "addNew" } = useParams<{ schoolId: string }>();

@@ -5,11 +5,10 @@ import BaseTemplate from '../../components/templates/BaseTemplate';
 import { GridColDef, GridRowParams } from '@mui/x-data-grid';
 import ColumnGenerator from '../../utils/columns/ColumnGenerator';
 import { useNavigate } from "react-router-dom";
-import SchoolService from '../../services/SchoolService';
+import schoolService from '../../services/SchoolService';
 import { School } from '../../interfaces/SchoolInterfaces';
 
 
-const schoolService = new SchoolService();
 
 const SchoolListPage: React.FC = () => {
   const navigate = useNavigate();

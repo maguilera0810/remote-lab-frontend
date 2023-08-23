@@ -6,9 +6,9 @@ import BaseTemplate from '../../components/templates/BaseTemplate';
 import SubjectForm from '../../components/organisms/forms/SubjectForm';
 import generateDefaultObject from '../../utils/forms/DefaultDataGenerator';
 import { useNavigate } from "react-router-dom";
-import SubjectService from '../../services/SubjectService';
+import subjectService from '../../services/SubjectService';
 
-const subjectService = new SubjectService();
+// const subjectService = new SubjectService();
 
 const SubjectDetailPage: React.FC = () => {
   const navigate = useNavigate();
