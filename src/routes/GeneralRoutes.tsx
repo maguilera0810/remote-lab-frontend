@@ -2,7 +2,7 @@ import { User } from "../interfaces/AuthInterfaces";
 import { Navigate, RouteObject } from 'react-router-dom';
 import {
   LoginPage,
-  SignupPage,
+  // SignupPage,
   HomePage,
   SchoolDetailPage,
   SchoolListPage,
@@ -11,9 +11,15 @@ import {
   ErrorPage
 } from '../pages'
 
-
 const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] => {
-  const RenderBasedOnAuth = (authenticatedComponent: React.ReactElement, redirectPath: string = '/login') => (token && user) ? authenticatedComponent : <Navigate to={redirectPath} />;
+
+  const isAuth = !!token && !!user
+  const RenderBasedOnAuth = (
+    component: React.ReactElement,
+    shouldRender: boolean = isAuth,
+    redirectPath: string = '/login'
+  ) => shouldRender ? component : <Navigate to={redirectPath} />;
+
   return [
     {
       path: "/",
@@ -22,14 +28,14 @@ const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] =
     },
     {
       path: "/login",
-      element: <LoginPage />,
+      element: RenderBasedOnAuth(<LoginPage />, !isAuth, '/'),
       errorElement: <ErrorPage />,
     },
-    {
-      path: "/signup",
-      element: <SignupPage />,
-      errorElement: <ErrorPage />,
-    },
+    // {
+    //   path: "/signup",
+    //   element: <SignupPage />,
+    //   errorElement: <ErrorPage />,
+    // },
     {
       path: "/school",
       element: RenderBasedOnAuth(<SchoolListPage />),

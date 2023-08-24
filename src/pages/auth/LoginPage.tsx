@@ -6,15 +6,14 @@ import { User } from '../../interfaces/AuthInterfaces'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { loginSuccess, loginFailure } from '../../redux/slices/authSlice'
-
+import { setCookie } from '../../utils/cookieUtils';
 const LoginPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSuccess = (user: User, token: string = "") => {
-    localStorage.setItem("token", token)
-    localStorage.setItem("username", user.username)
-    console.log(token);
     dispatch(loginSuccess({ user, token }));
+    setCookie('authUser', JSON.stringify(user));
+    setCookie('authToken', token);
     navigate('/');
   }
 
