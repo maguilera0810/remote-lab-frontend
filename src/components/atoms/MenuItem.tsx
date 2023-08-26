@@ -10,7 +10,7 @@ import * as icons from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 
 
-const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link, subMenu, isOpen = false, onClick }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link, subMenu, isOpen = false, onClick, cssProps = {} }) => {
 
   const [Icon, setIcon] = useState<React.JSX.Element | null>(null);
 
@@ -29,13 +29,13 @@ const MenuItem: React.FC<MenuItemProps> = ({ label, icon, link, subMenu, isOpen 
 
   return link ? (
     <Link to={link} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <ListItemButton>
+      <ListItemButton style={cssProps}>
         {Icon && <ListItemIcon>{Icon}</ListItemIcon>}
         <ListItemText primary={label} />
       </ListItemButton>
     </Link>
   ) : (
-    <ListItemButton onClick={onClick}>
+    <ListItemButton onClick={onClick} style={cssProps}>
       {Icon && <ListItemIcon>{Icon}</ListItemIcon>}
       <ListItemText primary={label} />
       {subMenu && <ListItemIcon>

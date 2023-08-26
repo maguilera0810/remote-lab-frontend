@@ -7,12 +7,12 @@ import DrawerHeader from '../atoms/DrawerHeader'
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/slices/authSlice';
 import { removeAllCookies, removeCookie } from '../../utils/cookieUtils';
 import { useNavigate } from "react-router-dom";
 
-
+const TAB_ITEM = 15 as const
 
 const DrawerPaper = styled('div')({
   width: 240,
@@ -82,6 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
                 link={subMenuItem.link}
                 subMenu={subMenuItem.subMenu}
                 isOpen={isSubSubMenuOpen(subIndex)}
+                cssProps={{ paddingLeft: TAB_ITEM * 2 }}
               />
               {renderSubSubMenuItems(subMenuItem.subMenu, subIndex)}
             </div>
@@ -104,6 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
               link={subSubMenuItem.link}
               subMenu={subSubMenuItem.subMenu}
               isOpen={isSubMenuOpen(subSubIndex)}
+              cssProps={{ paddingLeft: TAB_ITEM }}
             />
           ))}
         </List>

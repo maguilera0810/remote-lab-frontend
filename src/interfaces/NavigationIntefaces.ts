@@ -7,6 +7,7 @@ export interface MenuItemProps {
   isOpen?: boolean;
   subMenu?: MenuItemProps[];
   onClick?: () => void;
+  cssProps?: object;
 }
 
 export interface SidebarProps {
