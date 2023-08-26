@@ -6,3 +6,5 @@ export { default as SchoolDetailPage } from './school/SchoolDetailPage';
 export { default as SchoolListPage } from './school/SchoolListPage';
 export { default as SubjectListPage } from './subject/SubjectListPage';
 export { default as SubjectDetailPage } from './subject/SubjectDetailPage';
+export { default as LaboratoryListPage } from './laboratory/LaboratoryListPage';
+export { default as LaboratoryDetailPage } from './laboratory/LaboratoryDetailPage';

@@ -8,7 +8,6 @@ const SchoolForm: React.FC<SchoolFormProps> = ({ onSubmit, onDelete, onGoBack, d
   const [formData, setFormData] = useState<School>(data);
 
   const handleFieldChange = (fieldName: keyof School, value: any) => {
-    console.log(formData);
     setFormData(prevData => ({
       ...prevData,
       [fieldName]: value

@@ -1,6 +1,6 @@
 import { GridColDef } from '@mui/x-data-grid';
 
-export const SubjectColumns: GridColDef[] = [
+export const LaboratoryColumns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'ID',
@@ -12,8 +12,8 @@ export const SubjectColumns: GridColDef[] = [
     width: 130
   },
   {
-    field: 'school',
-    headerName: 'School',
-    width: 100
+    field: 'description',
+    headerName: 'Description',
+    width: 300
   },
 ];

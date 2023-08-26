@@ -48,8 +48,6 @@ const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, onDelete, o
     onGoBack && onGoBack();
   };
   useEffect(()=>{
-    console.log(data);
-    console.log(incommingData);
     setFormData({...incommingData})
     
   }, [incommingData])

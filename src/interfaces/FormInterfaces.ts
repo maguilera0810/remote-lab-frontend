@@ -1,8 +1,13 @@
-import { Subject, School } from "./SchoolInterfaces";
+import { Subject, School, Laboratory } from "./SchoolInterfaces";
 
 export interface BaseFormProps {
   onDelete?: (id: number) => void;
   onGoBack?: () => void;
+}
+
+export interface SchoolFormProps extends BaseFormProps {
+  onSubmit?: (formData: School) => void;
+  data: School;
 }
 
 export interface SubjectFormProps extends BaseFormProps {
@@ -10,7 +15,7 @@ export interface SubjectFormProps extends BaseFormProps {
   data: Subject;
 }
 
-export interface SchoolFormProps extends BaseFormProps {
-  onSubmit?: (formData: School) => void;
-  data: School;
+export interface LaboratoryFormProps extends BaseFormProps {
+  onSubmit?: (formData: Laboratory) => void;
+  data: Laboratory;
 }

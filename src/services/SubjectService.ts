@@ -40,7 +40,6 @@ export class SubjectService {
       if (isFake) {
         const parsedId = typeof id === 'number' ? id : parseInt(id, 10);
         const selectedSubject = subjects.find((e: Subject) => e.id === parsedId);
-        console.log(selectedSubject);
         return selectedSubject || null;
       }
       const response = await axios.get<Subject>(`${this.apiUrl}/subjects/${id}`);

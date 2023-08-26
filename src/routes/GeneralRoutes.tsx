@@ -8,7 +8,9 @@ import {
   SchoolListPage,
   SubjectListPage,
   SubjectDetailPage,
-  ErrorPage
+  LaboratoryListPage,
+  LaboratoryDetailPage,
+  ErrorPage,
 } from '../pages'
 
 const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] => {
@@ -31,11 +33,6 @@ const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] =
       element: RenderBasedOnAuth(<LoginPage />, !isAuth, '/'),
       errorElement: <ErrorPage />,
     },
-    // {
-    //   path: "/signup",
-    //   element: <SignupPage />,
-    //   errorElement: <ErrorPage />,
-    // },
     {
       path: "/school",
       element: RenderBasedOnAuth(<SchoolListPage />),
@@ -54,6 +51,16 @@ const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] =
     {
       path: "/subject/:subjectId",
       element: RenderBasedOnAuth(<SubjectDetailPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/laboratory",
+      element: RenderBasedOnAuth(<LaboratoryListPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/laboratory/:laboratoryId",
+      element: RenderBasedOnAuth(<LaboratoryDetailPage />),
       errorElement: <ErrorPage />,
     },
   ];

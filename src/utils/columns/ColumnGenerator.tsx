@@ -1,6 +1,7 @@
 import { SchoolColumns } from "../../data/columns/SchoolColumns";
 import { SubjectColumns } from "../../data/columns/SubjectColumns";
 import { UserColumns } from "../../data/columns/UserColumns";
+import { LaboratoryColumns } from '../../data/columns/LaboratoryColumns'
 import { GridColDef, GridCellParams } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +13,7 @@ const ColumnGenerator = ({ columnType, actions = true, handleEdit,
   const columnsAvailable: { [key: string]: GridColDef[] } = {
     'school': SchoolColumns,
     'subject': SubjectColumns,
+    'laboratory': LaboratoryColumns,
     'user': UserColumns,
   };
   let columns: GridColDef[] = [...columnsAvailable[columnType]];

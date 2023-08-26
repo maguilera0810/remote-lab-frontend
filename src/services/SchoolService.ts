@@ -38,7 +38,6 @@ export class SchoolService {
       if (isFake) {
         const parsedId = typeof id === 'number' ? id : parseInt(id, 10);
         const selectedSchool = schools.find((e: School) => e.id === parsedId);
-        console.log(selectedSchool);
         return selectedSchool ?? null;
       }
       const response = await axios.get<School>(`${this.apiUrl}/schools/${id}`);

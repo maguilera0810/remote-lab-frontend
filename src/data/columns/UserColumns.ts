@@ -1,4 +1,4 @@
-import { DataGrid, GridColDef, GridValueGetterParams, GridCellParams } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 
 export const UserColumns: GridColDef[] = [
   {

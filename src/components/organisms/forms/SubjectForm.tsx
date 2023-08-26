@@ -4,7 +4,7 @@ import { TextField, Button, Grid, Select, MenuItem, FormControl, InputLabel } fr
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
 import { School, Subject } from "../../../interfaces/SchoolInterfaces";
 import schoolService from '../../../services/SchoolService';
-
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack, data }) => {
 
@@ -12,7 +12,6 @@ const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack,
   const [schools, setSchools] = useState<School[]>([]);
 
   const handleFieldChange = (fieldName: keyof Subject, value: any) => {
-    console.log(formData);
     setFormData(prevData => ({
       ...prevData,
       [fieldName]: value
@@ -69,8 +68,8 @@ const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack,
             <InputLabel id='school-label'>School</InputLabel>
             <Select
               labelId='school-label'
-              label="School"
               value={formData.school || ''}
+              input={<OutlinedInput label="School" />}
               onChange={(e) => handleFieldChange('school', e.target.value)}
             >
               {schools.map(school => (
@@ -85,7 +84,6 @@ const SubjectForm: React.FC<SubjectFormProps> = ({ onSubmit, onDelete, onGoBack,
           <InputLabel>Description</InputLabel>
           <FormControl fullWidth>
             <TextareaAutosize
-              placeholder='Description'
               minRows={3}
               style={{ resize: 'vertical' }}
               value={formData.description}

@@ -20,7 +20,7 @@ export interface Laboratory {
   id: number;
   name: string;
   description: string;
-  url: string;
+  subjects: number[];
 }
 
 export interface LaboratoryEquipment {

@@ -25,36 +25,11 @@ export const menuItems: MenuItemProps[] = [
         icon: 'Subject',
         link: '/subject/'
       },
+      {
+        label: 'Laboratory',
+        icon: 'Biotech',
+        link: '/laboratory/'
+      },
     ]
   },
-  // {
-  //   label: 'Profile 1',
-  //   icon: 'Person',
-  //   subMenu: [
-  //     {
-  //       label: 'Login',
-  //       icon: 'Login',
-  //       link: '/login/',
-  //     },
-  //     {
-  //       label: 'Signup',
-  //       icon: 'Delete',
-  //       link: '/signup/',
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: 'Mail 2',
-  //   icon: 'Mail',
-  //   subMenu: [
-  //     {
-  //       label: 'Inbox',
-  //       icon: 'Mail'
-  //     },
-  //     {
-  //       label: 'Trash',
-  //       icon: 'Delete'
-  //     },
-  //   ],
-  // },
 ];
