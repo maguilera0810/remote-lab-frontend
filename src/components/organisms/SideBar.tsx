@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, Avatar, Typography, Collapse, Button } from '@mui/material';
+import { Drawer, List, Avatar, Typography, Collapse, Button, Divider } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import { MenuItemProps, SidebarProps } from '../../interfaces/NavigationIntefaces';
 import MenuItem from '../atoms/MenuItem';
@@ -7,11 +7,17 @@ import DrawerHeader from '../atoms/DrawerHeader'
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/slices/authSlice';
+import { removeAllCookies, removeCookie } from '../../utils/cookieUtils';
+import { useNavigate } from "react-router-dom";
+
+const TAB_ITEM = 15 as const
 
 const DrawerPaper = styled('div')({
   width: 240,
-  paddingTop: 64,
 });
+// paddingTop: 64,
 
 const StyledAvatar = styled(Avatar)({
   width: 64,
@@ -26,9 +32,18 @@ const UserName = styled(Typography)({
 });
 
 const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isOpen, sidebarWidth = 240 }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const theme = useTheme();
   const [openSubMenuIndices, setOpenSubMenuIndices] = useState<number[]>([]);
   const [openSubSubMenuIndices, setOpenSubSubMenuIndices] = useState<number[]>([]);
+
+  const Logout = () => {
+    dispatch(logout());
+    removeAllCookies();
+    navigate('/login');
+  }
+
 
   const handleSubMenuClick = (index: number) => {
     setOpenSubMenuIndices(prevIndices => {
@@ -67,6 +82,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
                 link={subMenuItem.link}
                 subMenu={subMenuItem.subMenu}
                 isOpen={isSubSubMenuOpen(subIndex)}
+                cssProps={{ paddingLeft: TAB_ITEM * 2 }}
               />
               {renderSubSubMenuItems(subMenuItem.subMenu, subIndex)}
             </div>
@@ -89,6 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
               link={subSubMenuItem.link}
               subMenu={subSubMenuItem.subMenu}
               isOpen={isSubMenuOpen(subSubIndex)}
+              cssProps={{ paddingLeft: TAB_ITEM }}
             />
           ))}
         </List>
@@ -116,8 +133,8 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
         </IconButton>
       </DrawerHeader>
       <DrawerPaper>
-        <StyledAvatar alt={user.name} src={user.avatarUrl} />
-        <UserName variant="h6">{user.name}</UserName>
+        {/* <StyledAvatar alt={user.name} src={user.avatarUrl} />
+        <UserName variant="h6">{user.name}</UserName> */}
         <List>
           {menuItems.map((menuItem: MenuItemProps, index: number) => (
             <div key={index}>
@@ -132,6 +149,11 @@ const Sidebar: React.FC<SidebarProps> = ({ user, menuItems, onToggleSidebar, isO
             </div>
           ))}
         </List>
+        <Divider />
+        <MenuItem label={"Logout"}
+          onClick={Logout}
+          icon={"Logout"}
+        />
       </DrawerPaper>
     </Drawer>
   );

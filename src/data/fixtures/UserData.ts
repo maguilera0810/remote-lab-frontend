@@ -1,4 +1,4 @@
-import { Role, User } from "../interfaces/AuthInterfaces";
+import { Role, User } from "../../interfaces/AuthInterfaces";
 
 export const adminRole: Role = {
   id: 1,

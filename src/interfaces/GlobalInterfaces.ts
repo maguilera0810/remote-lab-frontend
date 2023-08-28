@@ -1,5 +1,7 @@
 import { IconNames } from "../types/GlobalTypes";
 import { GridProps } from '@mui/material';
+import { School, Subject } from "./SchoolInterfaces";
+import { User } from "./AuthInterfaces";
 // import { User } from "./AuthInterfaces";
 // import { School } from "./SchoolInterfaces";
 
@@ -14,6 +16,12 @@ export interface ColumnGeneratorProps {
   handleDelete?: (id: number) => void;
 }
 
+
+export interface RouterGeneratorProps {
+  routerType?: 'general';
+  token: string | null;
+  user: User | null;
+}
 
 export interface FieldConfig {
   key: string;
@@ -34,10 +42,6 @@ export interface GenericFormProps {
   onSubmit?: (formData: FormData) => void;
   onDelete?: (id: number) => void;
   onGoBack?: () => void;
-
   // setFormData?: (data: FormData) => void;
 }
 
-export interface RouterGeneratorProps {
-  routerType?: 'general';
-}

@@ -1,14 +1,13 @@
 // src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { Box, TextField, Button } from '@mui/material';
-import { login, signup } from '../../../services/AuthService';
+import authService from '../../../services/AuthService';
 import { User } from "../../../interfaces/AuthInterfaces";
-
 export interface AuthFormProps {
   title?: string;
   isSignup: boolean;
-  onSuccess: (user: User) => void;
-  onFailure: () => void;
+  onSuccess: (user: User, token?: string) => void;
+  onFailure: (e: any) => void;
 }
 
 
@@ -35,16 +34,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, isSignup, onSuccess, onFailu
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const authFunc = isSignup ? signup : login;
-      const user = await authFunc(formData);
-      if (user) {
-        onSuccess(user);
+      const authFunc = isSignup ? authService.signup : authService.login;
+      const token = await authFunc(formData);
+      if (token) {
+        onSuccess(formData, token);
       } else {
-        onFailure();
+        onFailure("fallo");
       }
     } catch (error) {
       console.error('Error:', error);
-      onFailure();
+      onFailure(error);
     }
   };
 
@@ -92,7 +91,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ title, isSignup, onSuccess, onFailu
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-              />  
+              />
               <TextField
                 fullWidth
                 label="Nombre"

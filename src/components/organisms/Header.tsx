@@ -1,11 +1,13 @@
 import React from 'react';
-// import AppBar from '@mui/material/AppBar';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
+import { Avatar, Typography, Box } from '@mui/material';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { getCookie } from '../../utils/cookieUtils';
+import { User } from '../../interfaces/AuthInterfaces';
+
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -39,6 +41,8 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Header: React.FC<HeaderProps> = ({ onToggleSidebar, isSidebarOpen, open }) => {
+  const user = useSelector((state: RootState) => state.auth.user)
+  const savedUser: User | null = user || getCookie('authUser') || null;
   return (
     <AppBar position="fixed" color='default'>
       <Toolbar>
@@ -52,6 +56,16 @@ const Header: React.FC<HeaderProps> = ({ onToggleSidebar, isSidebarOpen, open })
         >
           <MenuIcon />
         </IconButton>
+        <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: 'flex-end' }}>
+          {savedUser && (
+            <>
+              <Typography variant="body2" sx={{ mr: 2 }}>{savedUser.username}</Typography>
+              <Avatar sx={{ bgcolor: "blue", marginRight: 2 }}>
+                {savedUser.username.charAt(0).toUpperCase()}
+              </Avatar>
+            </>
+          )}
+        </Box>
       </Toolbar>
     </AppBar>
   );

@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Header from '../organisms/Header';
 import DrawerHeader from '../atoms/DrawerHeader'
 import Sidebar from '../organisms/SideBar';
-import { menuItems } from '../../data/MenuData';
+import { menuItems } from '../../data/fixtures/MenuData';
 
 const drawerWidth = 240;
 

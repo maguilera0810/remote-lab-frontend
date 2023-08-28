@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FormData, FieldConfig, GenericFormProps } from '../../../interfaces/GlobalInterfaces'
 import { TextField, Button, Grid, Select, MenuItem, TextareaAutosize } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { SelectChangeEvent } from '@mui/material/Select';
 
-const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, onDelete, onGoBack, data }) => {
-  const [formData, setFormData] = useState<FormData>(data);
+const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, onDelete, onGoBack, data}) => {
+
+  const [incommingData, setIncommingData] = useState(data);
+  const [formData, setFormData] = useState<FormData>({...incommingData});
 
   const handleChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
     const { name, value } = e.target as HTMLInputElement;
@@ -45,6 +47,11 @@ const GenericForm: React.FC<GenericFormProps> = ({ fields, onSubmit, onDelete, o
   const handleGoBack = () => {
     onGoBack && onGoBack();
   };
+  useEffect(()=>{
+    setFormData({...incommingData})
+    
+  }, [incommingData])
+
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>

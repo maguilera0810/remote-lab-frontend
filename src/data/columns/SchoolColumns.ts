@@ -1,14 +1,14 @@
-import { DataGrid, GridColDef, GridValueGetterParams, GridCellParams } from '@mui/x-data-grid';
+import { GridColDef } from '@mui/x-data-grid';
 
 export const SchoolColumns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'ID',
-    // width: 70
+    width: 30
   },
   {
     field: 'name',
-    headerName: 'First name',
-    // width: 130
+    headerName: 'Name',
+    width: 130
   },
 ];
