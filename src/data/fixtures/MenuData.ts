@@ -30,6 +30,11 @@ export const menuItems: MenuItemProps[] = [
         icon: 'Biotech',
         link: '/laboratory/'
       },
+      {
+        label: 'Equipment',
+        icon: 'PrecisionManufacturing',
+        link: '/equipment/',
+      },
     ]
   },
 ];
