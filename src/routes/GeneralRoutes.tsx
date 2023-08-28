@@ -10,6 +10,8 @@ import {
   SubjectDetailPage,
   LaboratoryListPage,
   LaboratoryDetailPage,
+  EquipmentListPage,
+  EquipmentDetailPage,
   ErrorPage,
 } from '../pages'
 
@@ -61,6 +63,16 @@ const GeneralRoutes = (user: User | null, token: string | null): RouteObject[] =
     {
       path: "/laboratory/:laboratoryId",
       element: RenderBasedOnAuth(<LaboratoryDetailPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/equipment",
+      element: RenderBasedOnAuth(<EquipmentListPage />),
+      errorElement: <ErrorPage />,
+    },
+    {
+      path: "/equipment/:equipmentId",
+      element: RenderBasedOnAuth(<EquipmentDetailPage />),
       errorElement: <ErrorPage />,
     },
   ];

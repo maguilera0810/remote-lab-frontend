@@ -23,14 +23,17 @@ export interface Laboratory {
   subjects: number[];
 }
 
-export interface LaboratoryEquipment {
+export interface Equipment {
   id: number
   name: string;
   description: string;
   ipCamara: string; /// coneccion a la camara ?? tiene una o varias
   ipEquipo: string; // coneccion a equipo???
   state: string;
-  settings: object
+  settings: object;
+  laboratory?: number;
+  subjects?: number[];
+
 }
 
 export interface Schedule {

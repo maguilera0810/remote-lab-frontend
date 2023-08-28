@@ -8,3 +8,5 @@ export { default as SubjectListPage } from './subject/SubjectListPage';
 export { default as SubjectDetailPage } from './subject/SubjectDetailPage';
 export { default as LaboratoryListPage } from './laboratory/LaboratoryListPage';
 export { default as LaboratoryDetailPage } from './laboratory/LaboratoryDetailPage';
+export { default as EquipmentListPage } from './equipment/EquipmentListPage';
+export { default as EquipmentDetailPage } from './equipment/EquipmentDetailPage';
